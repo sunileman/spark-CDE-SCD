@@ -60,8 +60,7 @@ object StageSCD2 {
       .appName("Create Stage Table for SCD Type 2 workflow")
       .getOrCreate()
 
-    //val df = spark.read.csv("s3a://se-uat2/sunman/product_changes/")
-    //val df = spark.read.option("header", "true").option("sep","|").csv("s3a://se-uat2/sunman/product_changes/")
+
     val df = spark.read.option("header", "true").option("sep", "|").csv(sourceLoc)
 
     df.write.mode(SaveMode.Overwrite).saveAsTable(stageTable)
